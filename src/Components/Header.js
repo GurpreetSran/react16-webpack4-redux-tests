@@ -1,13 +1,17 @@
 import React from 'react';
+import logo from '../assets/logo.jpg'
 
-const Header = () => {
-    // const styles = {
-    //     'width': '100%',
-    //     'height': '100%'
-    // };
+const Header = (props) => {
+    if (!props.visible) {
+        return null;
+    }
+
+    const text = <div>The super header</div>;
+
     return (
-        <div className="logo">
-            <img src={require('../assets/LogoImage.jpg')} />
+        <div onClick={props.onHeaderClickHandler} className="logo">
+            {text}
+            {<img src={logo} alt='Header' />}
         </div>
     );
 };
