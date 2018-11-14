@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Components/Header';
+import isAuthorised from './hoc/isAuthorised';
 import '../src/styles/index.css';
 
 class App extends Component {
@@ -13,6 +14,8 @@ class App extends Component {
 
         this.onHeaderClickHandler = this.onHeaderClickHandler.bind(this);
         this.inputChangeHandler = this.inputChangeHandler.bind(this);
+
+        this.inputRef = React.createRef();
     }
 
     onHeaderClickHandler() {
@@ -32,18 +35,26 @@ class App extends Component {
         });
     }
 
+    componentDidMount() {
+        this.inputRef.current.focus();
+    }
     
     render() {
         return (
             <div>
+                user name: { this.props.user }
                 <Header 
                     onHeaderClickHandler={this.onHeaderClickHandler} 
                     visible={this.state.isHeaderVisible}     
                 />
-                <input value={this.state.inputValue} onChange={this.inputChangeHandler}/>
+                <input
+                    value={this.state.inputValue} 
+                    onChange={this.inputChangeHandler}
+                    ref={this.inputRef}
+                />
             </div>
         );
     }
 }
 
-export default App;
+export default isAuthorised(App);
