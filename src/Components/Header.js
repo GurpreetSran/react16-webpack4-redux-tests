@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.jpg';
+import { Link } from 'react-router-dom'; 
 
 const Header = (props) => {
     if (!props.visible) {
@@ -9,10 +10,25 @@ const Header = (props) => {
     const text = <div>The super header</div>;
 
     return (
-        <div onClick={props.onHeaderClickHandler} className="logo">
-            {text}
-            {<img src={logo} alt='Header' />}
-        </div>
+        <React.Fragment>
+            <div onClick={props.onHeaderClickHandler} className="logo">
+                {text}
+                {<img src={logo} alt='Header' />}
+            </div>
+            <ul className="navigation">
+                <li>
+                    <Link to="/">
+                        Home
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/list">
+                        List
+                    </Link>
+                </li>
+            </ul>     
+        </React.Fragment>
+
     );
 };
 

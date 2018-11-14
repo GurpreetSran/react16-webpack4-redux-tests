@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Components/Header';
 import isAuthorised from './hoc/isAuthorised';
+import CustomRoutes from './CustomRoutes';
 import '../src/styles/index.css';
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
                     onChange={this.inputChangeHandler}
                     ref={this.inputRef}
                 />
+                <CustomRoutes />
             </div>
         );
     }
